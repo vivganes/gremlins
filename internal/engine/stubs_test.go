@@ -73,6 +73,8 @@ func loadFixture(fixture, fromPackage string) (fstest.MapFS, gomodule.GoModule, 
 }
 
 func filenameFromFixture(fix string) string {
+	// Replace the path separator with the OS specific one.
+	fix = strings.ReplaceAll(fix, "/", string(os.PathSeparator))
 	return strings.ReplaceAll(fix, "_go", ".go")
 }
 
